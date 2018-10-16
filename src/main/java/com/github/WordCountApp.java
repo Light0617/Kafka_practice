@@ -11,7 +11,7 @@ import org.apache.kafka.streams.kstream.KTable;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class StreamsStarterApp {
+public class WordCountApp {
     public static void main(String[] args) {
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-application");
@@ -38,12 +38,13 @@ public class StreamsStarterApp {
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 
 
+        //System.out.println(streams.toString());
         // Update:
-        // print the topology every 5 seconds for learning purposes
+        // print the topology every 30 seconds for learning purposes
         while(true){
             System.out.println(streams.toString());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 break;
             }
